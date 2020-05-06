@@ -15,7 +15,15 @@ export default {
   },
   mounted: function() {
     const detectResult = detect();
-    this.warning = detectResult.name;
+    if (detectResult.name !== 'chrome') {
+      this.warning = detectResult.name;
+      return;
+    }
+
+    const bg = chrome.extension.getBackgroundPage();
+    if (bg.notepadState !== 'connected') {
+      this.warning = 'Not connected';
+    }
   },
 };
 </script>

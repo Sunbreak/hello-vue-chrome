@@ -19,3 +19,5 @@ browser.runtime.onInstalled.addListener(function() {
     await browser.tabs.update(singletonTab.id, { active: true });
   });
 });
+
+global.notepadState = 'disconnected';
